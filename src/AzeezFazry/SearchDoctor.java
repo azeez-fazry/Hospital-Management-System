@@ -37,7 +37,7 @@ public class SearchDoctor extends JFrame {
 	Toolkit toolkit = getToolkit();
 	Dimension size = toolkit.getScreenSize();
 	Image img = Toolkit.getDefaultToolkit()
-			.getImage("E:\\IntelliJ\\Fazry's Hospital Management System - FullScreen\\Images\\background.jpg");
+			.getImage("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\background.jpg");
 	static String dbUrl = "jdbc:mysql://localhost:3306/hospital_management_system";
 	static String username = "admin";
 	static String password = "admin@123";
@@ -87,13 +87,14 @@ public class SearchDoctor extends JFrame {
 		JLabel title = new JLabel("SEARCH DOCTOR");
 		title.setFont(new Font("Serif", Font.BOLD, 60));
 
-		JLabel lblNewLabel = new JLabelFormat("Enter Your ID:");
+		JLabel lblNewLabel = new JLabelFormat("Enter ID:");
 
 		textField1 = new JTextFieldFormat(10);
+		textField1.setText("2");
 
 		JButton backButton = new JButton();
 		backButton.setIcon(
-				new ImageIcon("E:\\IntelliJ\\Fazry's Hospital Management System - FullScreen\\Images\\back.jpg"));
+				new ImageIcon("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\back.jpg"));
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -102,7 +103,7 @@ public class SearchDoctor extends JFrame {
 
 		JButton cleanButton = new JButton();
 		cleanButton.setIcon(
-				new ImageIcon("E:\\IntelliJ\\Fazry's Hospital Management System - FullScreen\\Images\\clean.jpg"));
+				new ImageIcon("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\clean.jpg"));
 		cleanButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField1.setText("2");
@@ -116,7 +117,7 @@ public class SearchDoctor extends JFrame {
 
 		JButton searchButton = new JButton();
 		searchButton.setIcon(
-				new ImageIcon("E:\\IntelliJ\\Fazry's Hospital Management System - FullScreen\\Images\\search.jpg"));
+				new ImageIcon("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\search.jpg"));
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				searchButtonactionPerformed();
@@ -268,11 +269,11 @@ public class SearchDoctor extends JFrame {
 				jLabel4.setText(resultSet.getString("department"));
 				jLabel5.setText(resultSet.getString("fee"));
 			} else {
-				toolkit.beep();
+				
 				JOptionPane.showMessageDialog(null, "INVALID ID!", "ERROR", 0);
 			}
 		} catch (Exception ex) {
-			toolkit.beep();
+			
 			JOptionPane.showMessageDialog(null, "DATABASE NOT CONNECTED!", "ERROR", 0);
 		}
 	}

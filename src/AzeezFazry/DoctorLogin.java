@@ -41,7 +41,7 @@ public class DoctorLogin extends JFrame {
 	Toolkit toolkit = getToolkit();
 	Dimension size = toolkit.getScreenSize();
 	Image img = Toolkit.getDefaultToolkit()
-			.getImage("E:\\IntelliJ\\Fazry's Hospital Management System - FullScreen\\Images\\background.jpg");
+			.getImage("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\background.jpg");
 	static String dbUrl = "jdbc:mysql://localhost:3306/hospital_management_system";
 	static String username = "admin";
 	static String password = "admin@123";
@@ -87,38 +87,10 @@ public class DoctorLogin extends JFrame {
 		title.setFont(new Font("Serif", Font.BOLD, 60));
 
 		JButton logoutButton = new JButton();
-		logoutButton.setIcon(
-				new ImageIcon("E:\\IntelliJ\\Fazry's Hospital Management System - FullScreen\\Images\\logout.jpg"));
+		logoutButton.setIcon(new ImageIcon("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\logout.jpg"));
 		logoutButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-			}
-		});
-
-		JButton exitButton = new JButton();
-		exitButton.setIcon(
-				new ImageIcon("E:\\IntelliJ\\Fazry's Hospital Management System - FullScreen\\Images\\close.png"));
-		exitButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(1);
-			}
-		});
-
-		JButton aboutUsButton = new JButton();
-		aboutUsButton.setIcon(
-				new ImageIcon("E:\\IntelliJ\\Fazry's Hospital Management System - FullScreen\\Images\\contact.jpg"));
-		aboutUsButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							AboutUs frame = new AboutUs();
-							frame.setVisible(true);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
 			}
 		});
 
@@ -127,8 +99,7 @@ public class DoctorLogin extends JFrame {
 		textField = new JTextFieldFormat(10);
 
 		JButton searchButton = new JButton();
-		searchButton.setIcon(
-				new ImageIcon("E:\\IntelliJ\\Fazry's Hospital Management System - FullScreen\\Images\\search.jpg"));
+		searchButton.setIcon(new ImageIcon("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\search.jpg"));
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id = textField.getText();
@@ -151,45 +122,43 @@ public class DoctorLogin extends JFrame {
 		scrollPane.setViewportView(table);
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-						.addComponent(title, GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE).addGap(540)
-						.addComponent(aboutUsButton, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(exitButton, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap())
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(74)
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addGap(39).addComponent(textField, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
-						.addGap(47)
-						.addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-						.addGap(666))
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(233)
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE).addGap(233))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup().addGap(583)
-						.addComponent(logoutButton, GroupLayout.PREFERRED_SIZE, 200, Short.MAX_VALUE).addGap(583)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(
-				Alignment.LEADING,
-				gl_contentPane.createSequentialGroup().addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(title, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+		gl_contentPane
+				.setHorizontalGroup(
+						gl_contentPane
+								.createParallelGroup(
+										Alignment.TRAILING)
+								.addGroup(gl_contentPane.createSequentialGroup().addGap(74)
 										.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 												GroupLayout.PREFERRED_SIZE)
-										.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										.addGap(39)
+										.addComponent(textField, GroupLayout.PREFERRED_SIZE, 144,
 												GroupLayout.PREFERRED_SIZE)
-										.addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 40,
-												GroupLayout.PREFERRED_SIZE))
-								.addGap(106)
-								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 212, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(aboutUsButton, GroupLayout.PREFERRED_SIZE, 31,
+										.addGap(47)
+										.addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 200,
 												GroupLayout.PREFERRED_SIZE)
-										.addComponent(exitButton, GroupLayout.PREFERRED_SIZE, 31,
-												GroupLayout.PREFERRED_SIZE))))
+										.addGap(666))
+								.addGroup(
+										gl_contentPane.createSequentialGroup().addGap(233)
+												.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 900,
+														Short.MAX_VALUE)
+												.addGap(233))
+								.addGroup(gl_contentPane.createSequentialGroup().addGap(583)
+										.addComponent(logoutButton, GroupLayout.PREFERRED_SIZE, 200, Short.MAX_VALUE)
+										.addGap(583))
+								.addGroup(Alignment.LEADING,
+										gl_contentPane.createSequentialGroup().addContainerGap()
+												.addComponent(title, GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
+												.addGap(622)));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup().addComponent(title).addGap(30)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+						.addGap(106)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 212, GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
 						.addComponent(logoutButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap()));
