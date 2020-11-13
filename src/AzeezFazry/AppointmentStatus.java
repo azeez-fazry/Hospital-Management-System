@@ -77,7 +77,8 @@ public class AppointmentStatus extends JFrame {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, size.width, size.height - 30);
-//		setResizable(false);
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\logo.png"));
 
 		contentPane = new BackgroundJPanel(img);
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -256,8 +257,8 @@ public class AppointmentStatus extends JFrame {
 			statement = connection.createStatement();
 
 			// execute sql query
-			String query1 = "SELECT app_id,d_id FROM appoinment WHERE p_id=" + P_ID + " AND app_date='" + DATE + "'";
-			String query2 = "SELECT fname,lname,disease FROM patients WHERE id=" + P_ID;
+			String query1 = "SELECT app_id,d_id FROM appointment WHERE p_id=" + P_ID + " AND app_date='" + DATE + "'";
+			String query2 = "SELECT p_fname,p_lname,disease FROM patient WHERE p_id=" + P_ID;
 
 			resultSet = statement.executeQuery(query1);
 			if (resultSet.next()) {
@@ -269,18 +270,18 @@ public class AppointmentStatus extends JFrame {
 
 			resultSet = statement.executeQuery(query2);
 			if (resultSet.next()) {
-				jLabel3.setText(resultSet.getString("fname") + " " + resultSet.getString("lname"));
+				jLabel3.setText(resultSet.getString("p_fname") + " " + resultSet.getString("p_lname"));
 				jLabel4.setText(resultSet.getString("disease"));
 			}
 //			else {
 //				JOptionPane.showMessageDialog(null, this, "ERROR", 0);
 //			}
 
-			String query3 = "SELECT fname,lname FROM doctors WHERE id=" + D_ID;
+			String query3 = "SELECT d_fname,d_lname FROM doctor WHERE d_id=" + D_ID;
 
 			resultSet = statement.executeQuery(query3);
 			if (resultSet.next()) {
-				jLabel2.setText(resultSet.getString("fname") + " " + resultSet.getString("lname"));
+				jLabel2.setText(resultSet.getString("d_fname") + " " + resultSet.getString("d_lname"));
 			}
 //			else {
 //				JOptionPane.showMessageDialog(null, this, "ERROR", 0);

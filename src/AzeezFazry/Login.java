@@ -31,19 +31,15 @@ import java.awt.SystemColor;
 
 public class Login extends JFrame {
 
-//	Variables declaration - do not modify
-
+	// Variables declaration - do not modify
 	private JPanel contentPane;
 	Toolkit toolkit = getToolkit();
 	Dimension size = toolkit.getScreenSize();
 	Image img = Toolkit.getDefaultToolkit()
 			.getImage("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\backgroundLogin.jpg");
-	Image img1 = Toolkit.getDefaultToolkit()
-			.getImage("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\admin.png");
 	private JTextField textField;
 	private JPasswordField passwordField;
-
-//	End of variables declaration
+	// End of variables declaration
 
 	/**
 	 * Launch the application.
@@ -64,6 +60,8 @@ public class Login extends JFrame {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, size.width, size.height - 30);
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\logo.png"));
 
 		contentPane = new BackgroundJPanel(img);
 
@@ -79,29 +77,21 @@ public class Login extends JFrame {
 		panel.setOpaque(false);
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
+						.addComponent(title, GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE).addGap(622))
+				.addGroup(gl_contentPane.createSequentialGroup().addGap(353)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 660, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(355, Short.MAX_VALUE)));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(title, GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
-					.addGap(622))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(353)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 660, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(355, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(title, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-					.addGap(300)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 333, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
+						.addComponent(title, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE).addGap(300)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 333, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap()));
 
-		JLabel lblNewLabel = new JLabelFormat("USERNAME:");
+		JLabel jLabel1 = new JLabelFormat("USERNAME:");
 
-		JLabel lblNewLabel_1 = new JLabelFormat("PASSWORD:");
+		JLabel jLabel2 = new JLabelFormat("PASSWORD:");
 
 		textField = new JTextFieldFormat(10);
 
@@ -165,9 +155,9 @@ public class Login extends JFrame {
 								GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel.createSequentialGroup().addGap(88)
 								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 												GroupLayout.PREFERRED_SIZE)
-										.addGroup(gl_panel.createSequentialGroup().addGap(2).addComponent(lblNewLabel_1,
+										.addGroup(gl_panel.createSequentialGroup().addGap(2).addComponent(jLabel2,
 												GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 												GroupLayout.PREFERRED_SIZE)))
 								.addGap(30)
@@ -177,25 +167,22 @@ public class Login extends JFrame {
 										.addComponent(passwordField, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE,
 												250, GroupLayout.PREFERRED_SIZE))))
 						.addContainerGap(98, Short.MAX_VALUE)));
-		gl_panel.setVerticalGroup(
-				gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup().addGap(37)
-								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_panel.createSequentialGroup()
-												.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addGap(52).addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-										.addGroup(gl_panel.createSequentialGroup()
-												.addComponent(textField, GroupLayout.PREFERRED_SIZE, 40,
-														GroupLayout.PREFERRED_SIZE)
-												.addGap(51).addComponent(passwordField, GroupLayout.PREFERRED_SIZE, 40,
-														GroupLayout.PREFERRED_SIZE)))
-								.addGap(58)
-								.addComponent(loginButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(45, Short.MAX_VALUE)));
+		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(gl_panel
+				.createSequentialGroup().addGap(37)
+				.addGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(gl_panel.createSequentialGroup()
+						.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addGap(52).addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createSequentialGroup()
+								.addComponent(textField, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+								.addGap(51).addComponent(passwordField, GroupLayout.PREFERRED_SIZE, 40,
+										GroupLayout.PREFERRED_SIZE)))
+				.addGap(58).addComponent(loginButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+				.addContainerGap(45, Short.MAX_VALUE)));
 		panel.setLayout(gl_panel);
 
 		contentPane.setLayout(gl_contentPane);
 	}
+
 }

@@ -78,7 +78,8 @@ public class SearchDoctor extends JFrame {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, size.width, size.height - 30);
-//		setResizable(false);
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\logo.png"));
 
 		contentPane = new BackgroundJPanel(img);
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -258,12 +259,12 @@ public class SearchDoctor extends JFrame {
 			statement = connection.createStatement();
 
 			// execute sql query
-			String query = "SELECT fname,lname,phone,qualification,department,fee FROM doctors WHERE id=" + ID;
+			String query = "SELECT d_fname,d_lname,phone,qualification,department,fee FROM doctor WHERE d_id=" + ID;
 
 			resultSet = statement.executeQuery(query);
 
 			if (resultSet.next()) {
-				jLabel1.setText(resultSet.getString("fname") + " " + resultSet.getString("lname"));
+				jLabel1.setText(resultSet.getString("d_fname") + " " + resultSet.getString("d_lname"));
 				jLabel2.setText(resultSet.getString("phone"));
 				jLabel3.setText(resultSet.getString("qualification"));
 				jLabel4.setText(resultSet.getString("department"));

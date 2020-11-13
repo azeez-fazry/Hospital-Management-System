@@ -12,6 +12,7 @@ public class JTextFieldFormat extends JTextField {
 	public JTextFieldFormat(int columns) {
 		setFont(new Font("Serif", Font.PLAIN, 25));
 //		setBackground(new Color(176, 224, 230));
+		setText(null);
 		setOpaque(false);
 		setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.desktop, SystemColor.desktop, SystemColor.desktop, SystemColor.desktop));
 		

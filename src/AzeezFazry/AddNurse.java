@@ -86,13 +86,14 @@ public class AddNurse extends JFrame {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, size.width, size.height - 30);
-//		setResizable(false);
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\logo.png"));
 
 		contentPane = new BackgroundJPanel(img);
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
 
-		JLabel title = new JLabel("ADD NEW PATIENT");
+		JLabel title = new JLabel("ADD NEW NURSE");
 		title.setFont(new Font("Serif", Font.BOLD, 60));
 
 		textField1 = new JTextFieldFormat(10);
@@ -243,7 +244,7 @@ public class AddNurse extends JFrame {
 			// create statement
 			statement = connection.createStatement();
 
-			String S = "insert into nurse (fname,lname,address,phone,qualification,department,date,ward) values('"
+			String S = "insert into nurse (n_fname,n_lname,address,phone,qualification,department,date,ward) values('"
 					+ textField1.getText() + "','" + textField2.getText() + "','" + textField3.getText() + "','"
 					+ textField4.getText() + "','" + textField5.getText() + "','" + textField6.getText() + "','"
 					+ textField7.getText() + "','" + textField8.getText() + "');";

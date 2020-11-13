@@ -53,7 +53,8 @@ public class Home extends JFrame {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, size.width, size.height - 30);
-//		setResizable(false);
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\logo.png"));
 
 		contentPane = new BackgroundJPanel(img);
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
