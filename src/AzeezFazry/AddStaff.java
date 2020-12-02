@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -54,8 +55,9 @@ public class AddStaff extends JFrame {
 	static String dbUrl = "jdbc:mysql://localhost:3306/hospital_management_system";
 	static String username = "admin";
 	static String password = "admin@123";
-	Connection connection = null;
-	Statement statement = null;
+	Connection connection;
+	Statement statement;
+	ResultSet resultSet;
 	Date date = new Date();
 	SimpleDateFormat f = new SimpleDateFormat("YYYY-MM-dd");
 
@@ -241,14 +243,20 @@ public class AddStaff extends JFrame {
 			// create statement
 			statement = connection.createStatement();
 
-			String S = "insert into nurse (n_fname,n_lname,address,phone,qualification,department,date,ward) values('"
+			String S = "insert into staff (s_fname,s_lname,address,phone,qualification,department,date) values('"
 					+ textField1.getText() + "','" + textField2.getText() + "','" + textField3.getText() + "','"
 					+ textField4.getText() + "','" + textField5.getText() + "','" + textField6.getText() + "','"
-					+ textField7.getText() + "','" + "');";
+					+ textField7.getText() + "');";
 
 			statement.executeUpdate(S);
 
-			JOptionPane.showMessageDialog(null, "Record Successfully Inserted");
+			String query = "select max(p_id) from patient";
+			resultSet = statement.executeQuery(query);
+			if (resultSet.next()) {
+				String id = resultSet.getString("max(p_id)");
+				JOptionPane.showMessageDialog(null, "Record Inserted Successfully." + "\n" + "\n" + "STAFF ID: " + id,
+						"Record Inserted Successfully", JOptionPane.NO_OPTION);
+			}
 
 			textField1.setText("");
 			textField2.setText("");

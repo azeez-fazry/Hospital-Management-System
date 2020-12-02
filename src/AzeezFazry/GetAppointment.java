@@ -37,6 +37,7 @@ import javax.swing.border.TitledBorder;
 
 public class GetAppointment extends JFrame {
 
+	protected static final boolean True = false;
 //  Variables declaration - do not modify
 
 	private JPanel contentPane;
@@ -47,9 +48,9 @@ public class GetAppointment extends JFrame {
 	static String dbUrl = "jdbc:mysql://localhost:3306/hospital_management_system";
 	static String username = "admin";
 	static String password = "admin@123";
-	Connection connection = null;
-	Statement statement = null;
-	ResultSet resultSet = null;
+	Connection connection;
+	Statement statement;
+	ResultSet resultSet;
 	String datePattern = "YYYY-MM-dd";
 	Date date = new Date();
 	SimpleDateFormat ft = new SimpleDateFormat(datePattern);
@@ -61,7 +62,8 @@ public class GetAppointment extends JFrame {
 	private JTextField textField5;
 	private JTextField textField6;
 	private JTextField textField7;
-
+	String pid;
+	String did;
 //  End of variables declaration
 
 	/**
@@ -123,39 +125,31 @@ public class GetAppointment extends JFrame {
 		panel2.setOpaque(false);
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup()
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup().addGap(283)
+								.addComponent(backButton, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+								.addGap(394).addComponent(submitButton, GroupLayout.PREFERRED_SIZE, 200,
+										GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addComponent(title,
+								GroupLayout.PREFERRED_SIZE, 908, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup().addGap(50)
+								.addComponent(panel1, GroupLayout.PREFERRED_SIZE, 600, GroupLayout.PREFERRED_SIZE)
+								.addGap(66)
+								.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 600, GroupLayout.PREFERRED_SIZE)))
+				.addContainerGap(101, Short.MAX_VALUE)));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(283)
-							.addComponent(backButton, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-							.addGap(394)
-							.addComponent(submitButton, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(title, GroupLayout.PREFERRED_SIZE, 908, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(50)
-							.addComponent(panel1, GroupLayout.PREFERRED_SIZE, 600, GroupLayout.PREFERRED_SIZE)
-							.addGap(66)
-							.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 600, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(101, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(title, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-					.addGap(106)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel1, GroupLayout.PREFERRED_SIZE, 327, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(backButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-						.addComponent(submitButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
+						.addComponent(title, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE).addGap(106)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel1, GroupLayout.PREFERRED_SIZE, 327, GroupLayout.PREFERRED_SIZE))
+						.addPreferredGap(ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(backButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+								.addComponent(submitButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+						.addContainerGap()));
 
 		JLabel jLabel2 = new JLabelFormat("Doctor ID:");
 
@@ -217,52 +211,63 @@ public class GetAppointment extends JFrame {
 		textField7 = new JTextFieldFormat(10);
 
 		GroupLayout gl_panel1 = new GroupLayout(panel1);
-		gl_panel1.setHorizontalGroup(
-			gl_panel1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel1.createSequentialGroup()
-					.addGap(23)
-					.addGroup(gl_panel1.createParallelGroup(Alignment.LEADING)
-						.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(jLabel7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(38)
-					.addGroup(gl_panel1.createParallelGroup(Alignment.TRAILING)
-						.addComponent(textField6, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField5, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField7, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField4, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField1, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(24, Short.MAX_VALUE))
-		);
-		gl_panel1.setVerticalGroup(
-			gl_panel1.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel1.createSequentialGroup()
-					.addGap(19)
-					.addGroup(gl_panel1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel1.createSequentialGroup()
-							.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(jLabel7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel1.createSequentialGroup()
-							.addComponent(textField1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(textField4, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(textField5, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(textField6, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(textField7, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(37, Short.MAX_VALUE))
-		);
+		gl_panel1.setHorizontalGroup(gl_panel1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel1.createSequentialGroup().addGap(23)
+						.addGroup(gl_panel1.createParallelGroup(Alignment.LEADING)
+								.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(jLabel7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE))
+						.addGap(38)
+						.addGroup(gl_panel1.createParallelGroup(Alignment.TRAILING)
+								.addComponent(textField6, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textField5, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textField7, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textField4, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textField1, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE))
+						.addContainerGap(24, Short.MAX_VALUE)));
+		gl_panel1
+				.setVerticalGroup(gl_panel1.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
+						gl_panel1.createSequentialGroup().addGap(19).addGroup(gl_panel1
+								.createParallelGroup(
+										Alignment.LEADING)
+								.addGroup(gl_panel1.createSequentialGroup()
+										.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+												GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+												GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+												GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+												GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(
+												jLabel7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+												GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_panel1.createSequentialGroup()
+										.addComponent(textField1, GroupLayout.PREFERRED_SIZE, 40,
+												GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(textField4, GroupLayout.PREFERRED_SIZE, 40,
+												GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(textField5, GroupLayout.PREFERRED_SIZE, 40,
+												GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(textField6, GroupLayout.PREFERRED_SIZE, 40,
+												GroupLayout.PREFERRED_SIZE)
+										.addGap(18).addComponent(textField7, GroupLayout.PREFERRED_SIZE, 40,
+												GroupLayout.PREFERRED_SIZE)))
+								.addContainerGap(37, Short.MAX_VALUE)));
 		panel1.setLayout(gl_panel1);
 
 		contentPane.setLayout(gl_contentPane);
@@ -279,12 +284,21 @@ public class GetAppointment extends JFrame {
 				// get statement
 				statement = connection.createStatement();
 
-				String S = "insert into appointment (p_id,d_id,app_date,blood_pressure,blood_sugar,weight,temperature) values('" + textField1.getText() + "','"
-						+ textField2.getText() + "','" + textField3.getText() + "','" + textField4.getText() + "','" + textField5.getText() + "','" + textField6.getText() + "','" + textField7.getText() + "');";
+				pid = textField1.getText();
+				did = textField2.getText();
+				String S = "insert into appointment (p_id,d_id,app_date,blood_pressure,blood_sugar,weight,temperature) values('"
+						+ pid + "','" + did + "','" + textField3.getText() + "','" + textField4.getText() + "','"
+						+ textField5.getText() + "','" + textField6.getText() + "','" + textField7.getText() + "');";
 
 				statement.executeUpdate(S);
 
-				JOptionPane.showMessageDialog(null, "Record Successfully Inserted");
+				String query = "select max(d_id) from appointment;";
+				resultSet = statement.executeQuery(query);
+				if (resultSet.next()) {
+					String id = resultSet.getString("max(d_id)");
+					JOptionPane.showMessageDialog(null, "Record Inserted Successfully." + "\n" + "\n" + "APPOINTMENT ID: " + id,
+							"Record Inserted Successfully", JOptionPane.NO_OPTION);
+				}
 
 				textField1.setText("1");
 				textField2.setText("2");
@@ -296,6 +310,12 @@ public class GetAppointment extends JFrame {
 		} else {
 			textField3.setText(curr);
 		}
+
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				new BillInfo(pid, did).setVisible(true);
+			}
+		});
 	}
 
 	private boolean compareDate(String App_Date) {

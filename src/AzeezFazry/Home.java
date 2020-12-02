@@ -22,13 +22,11 @@ import javax.swing.border.EmptyBorder;
 public class Home extends JFrame {
 
 //  Variables declaration - do not modify
-
 	private JPanel contentPane;
 	Toolkit toolkit = getToolkit();
 	Dimension size = toolkit.getScreenSize();
 	Image img = Toolkit.getDefaultToolkit()
 			.getImage("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\backgroundHome.jpg");
-
 //  End of variables declaration
 
 	/**
@@ -71,6 +69,7 @@ public class Home extends JFrame {
 				});
 			}
 		});
+		getRootPane().setDefaultButton(logintButton);
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)

@@ -31,7 +31,7 @@ import java.awt.SystemColor;
 
 public class Login extends JFrame {
 
-	// Variables declaration - do not modify
+// 	Variables declaration - do not modify
 	private JPanel contentPane;
 	Toolkit toolkit = getToolkit();
 	Dimension size = toolkit.getScreenSize();
@@ -39,7 +39,7 @@ public class Login extends JFrame {
 			.getImage("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\backgroundLogin.jpg");
 	private JTextField textField;
 	private JPasswordField passwordField;
-	// End of variables declaration
+// 	End of variables declaration
 
 	/**
 	 * Launch the application.
@@ -67,7 +67,7 @@ public class Login extends JFrame {
 
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
-
+		
 		JLabel title = new JLabel("LOGIN");
 		title.setFont(new Font("Serif", Font.BOLD, 60));
 
@@ -106,6 +106,7 @@ public class Login extends JFrame {
 		loginButton.setIcon(new ImageIcon("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\login.jpg"));
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				String username = textField.getText();
 				String password = new String(passwordField.getPassword());
 
@@ -147,6 +148,8 @@ public class Login extends JFrame {
 				}
 			}
 		});
+		getRootPane().setDefaultButton(loginButton);
+		
 
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
