@@ -13,6 +13,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
@@ -67,8 +68,6 @@ public class AboutUs extends JFrame {
 				.getImage("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\logo.png"));
 
 		contentPane = new BackgroundJPanel(img);
-		contentPane.setBackground(Color.WHITE);
-		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
 
 		JLabel title = new JLabel("HOSPITAL MANAGEMENT SYSTEM");
@@ -157,16 +156,16 @@ public class AboutUs extends JFrame {
 		JLabel lblNewLabel_1 = new JLabelFormat("-- 1CE18CS010 --");
 		
 		textField = new JTextField("azeezfazry@gmail.com");
+		textField.setBorder(BorderFactory.createEmptyBorder());
 		textField.setFont(new Font("Serif", Font.BOLD, 30));
 		textField.setEditable(false);
 		textField.setOpaque(false);
 		
 		textField_1 = new JTextField("http://github.com/azeez-fazry");
+		textField_1.setBorder(BorderFactory.createEmptyBorder());
 		textField_1.setFont(new Font("Serif", Font.BOLD, 30));
 		textField_1.setEditable(false);
 		textField_1.setOpaque(false);
-		
-		JLabel lblNewLabel_4 = new JLabelFormat("+91 89714 29746");
 		
 		GroupLayout gl_developedByPanel = new GroupLayout(developedByPanel);
 		gl_developedByPanel.setHorizontalGroup(
@@ -180,8 +179,7 @@ public class AboutUs extends JFrame {
 							.addGroup(gl_developedByPanel.createParallelGroup(Alignment.LEADING)
 								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap(257, Short.MAX_VALUE))
 		);
 		gl_developedByPanel.setVerticalGroup(
@@ -194,9 +192,7 @@ public class AboutUs extends JFrame {
 					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(38, Short.MAX_VALUE))
+					.addContainerGap(45, Short.MAX_VALUE))
 		);
 		developedByPanel.setLayout(gl_developedByPanel);
 		contentPane.setLayout(gl_contentPane);

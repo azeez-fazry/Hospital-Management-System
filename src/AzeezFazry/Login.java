@@ -75,6 +75,7 @@ public class Login extends JFrame {
 		panel.setBorder(new TitledBorder(new LineBorder(SystemColor.controlDkShadow, 2, true), "LOGIN INFORMATION",
 				TitledBorder.LEADING, TitledBorder.TOP, new Font("serf", 1, 20), Color.BLACK));
 		panel.setOpaque(false);
+//		panel.setBackground(new Color(0,0,0,20));
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)

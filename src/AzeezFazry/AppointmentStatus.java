@@ -245,9 +245,8 @@ public class AppointmentStatus extends JFrame {
 	}
 
 	protected void searchButtonactionPerformed() {
-		String P_ID = textField1.getText();
-		String DATE = textField2.getText();
-		String D_ID = null;
+		String pid = textField1.getText();
+		String date = textField2.getText();
 
 		try {
 			// get connection to database
@@ -257,38 +256,19 @@ public class AppointmentStatus extends JFrame {
 			statement = connection.createStatement();
 
 			// execute sql query
-			String query1 = "SELECT app_id,d_id FROM appointment WHERE p_id=" + P_ID + " AND app_date='" + DATE + "'";
-			String query2 = "SELECT p_fname,p_lname,disease FROM patient WHERE p_id=" + P_ID;
-
-			resultSet = statement.executeQuery(query1);
+			String query = "SELECT A.APP_ID,P_FNAME,P_LNAME,DISEASE,D_FNAME,D_LNAME FROM APPOINTMENT A JOIN PATIENT P JOIN DOCTOR D WHERE A.D_ID=D.D_ID AND A.P_ID=P.P_ID AND A.P_ID="
+					+ pid + " AND A.APP_DATE='" + date + "'";
+			resultSet = statement.executeQuery(query);
 			if (resultSet.next()) {
-				jLabel1.setText(resultSet.getString("app_id"));
-				D_ID = resultSet.getString("d_id");
+				jLabel1.setText(resultSet.getString("A.APP_ID"));
+				jLabel2.setText(resultSet.getString("D_FNAME") + " " + resultSet.getString("D_LNAME"));
+				jLabel3.setText(resultSet.getString("P_FNAME") + " " + resultSet.getString("P_LNAME"));
+				jLabel4.setText(resultSet.getString("DISEASE"));
 			} else {
-				JOptionPane.showMessageDialog(null, "NO APPOINTMENT FOUND!", "ERROR", 0);
+				JOptionPane.showMessageDialog(null, this, "ERROR", 0);
 			}
-
-			resultSet = statement.executeQuery(query2);
-			if (resultSet.next()) {
-				jLabel3.setText(resultSet.getString("p_fname") + " " + resultSet.getString("p_lname"));
-				jLabel4.setText(resultSet.getString("disease"));
-			}
-//			else {
-//				JOptionPane.showMessageDialog(null, this, "ERROR", 0);
-//			}
-
-			String query3 = "SELECT d_fname,d_lname FROM doctor WHERE d_id=" + D_ID;
-
-			resultSet = statement.executeQuery(query3);
-			if (resultSet.next()) {
-				jLabel2.setText(resultSet.getString("d_fname") + " " + resultSet.getString("d_lname"));
-			}
-//			else {
-//				JOptionPane.showMessageDialog(null, this, "ERROR", 0);
-//			}
-
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, "DATABASE NOT CONNECTED!", "ERROR", 0);
+			JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", 0);
 		}
 	}
 

@@ -82,7 +82,6 @@ public class BillInfo extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * 
 	 * @param pid
 	 * @param did
 	 */
@@ -483,5 +482,6 @@ public class BillInfo extends JFrame {
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, ex, "ERROR", 0);
 		}
+		dispose();
 	}
 }

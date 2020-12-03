@@ -12,8 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -29,8 +29,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 public class DoctorLogin extends JFrame {
 
@@ -45,7 +45,8 @@ public class DoctorLogin extends JFrame {
 	static String username = "admin";
 	static String password = "admin@123";
 	Connection connection = null;
-	PreparedStatement statement = null;
+	Statement statement = null;
+	ResultSet resultset = null;
 	Date date = new Date();
 	SimpleDateFormat f = new SimpleDateFormat("YYYY-MM-dd");
 	private JTextField textField;
@@ -78,7 +79,7 @@ public class DoctorLogin extends JFrame {
 		setBounds(0, 0, size.width, size.height - 30);
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\logo.png"));
-		
+
 		contentPane = new BackgroundJPanel(img);
 		setContentPane(contentPane);
 
@@ -105,8 +106,7 @@ public class DoctorLogin extends JFrame {
 				searchButtonactionPerformed(id);
 			}
 		});
-		
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);
 		table = new JTable();
@@ -164,60 +164,51 @@ public class DoctorLogin extends JFrame {
 	}
 
 	protected void searchButtonactionPerformed(String id) {
-		String FNAME = null;
-		String LNAME = null;
-		String DISEASE = null;
-		String D_ID = id;
-
+		String did = id;
 		String[] columnNames = { "App_ID", "App_Date", "Patient Name", "Disease", "Blood Pressure", "Blood Sugar",
 				"Weight", "Temperature" };
 
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+
 		try {
 			// get connection to database
 			connection = DriverManager.getConnection(dbUrl, username, password);
 
 			// create statement
-			String query1 = "SELECT app_id,p_id,blood_pressure,blood_sugar,weight,temperature,app_date FROM appointment WHERE d_id=?";
-			statement = connection.prepareStatement(query1);
-			statement.setString(1, D_ID);
-			ResultSet resultSet1 = statement.executeQuery();
+			statement = connection.createStatement();
+			String query = "SELECT APP_ID,APP_DATE,P_FNAME,P_LNAME,DISEASE,BLOOD_PRESSURE,BLOOD_SUGAR,WEIGHT,TEMPERATURE FROM APPOINTMENT NATURAL JOIN PATIENT WHERE D_ID="
+					+ did;
+			resultset = statement.executeQuery(query);
 
 			try {
-				while (resultSet1.next()) {
-					int APP_ID = resultSet1.getInt("app_id");
-					int P_ID = resultSet1.getInt("p_id");
-					String PRESSURE = resultSet1.getString("blood_pressure");
-					String SUGAR = resultSet1.getString("blood_sugar");
-					String WEIGHT = resultSet1.getString("weight");
-					String TEMPERATURE = resultSet1.getString("temperature");
-					String DATE = resultSet1.getString("app_date");
-					try {
-						connection = DriverManager.getConnection(dbUrl, username, password);
-						String query2 = "SELECT p_fname,p_lname,disease FROM patient WHERE p_id=?";
-						statement = connection.prepareStatement(query2);
-						statement.setInt(1, P_ID);
-						ResultSet resultSet2 = statement.executeQuery();
-						if (resultSet2.next()) {
-							FNAME = resultSet2.getString("p_fname");
-							LNAME = resultSet2.getString("p_lname");
-							DISEASE = resultSet2.getString("disease");
-						}
-					} catch (Exception ex) {
-						JOptionPane.showMessageDialog(null, this, "Error", 0);
-					}
+				
+				while (resultset.next()) {
+					
+					String APP_ID = resultset.getString("APP_ID");
+					String PRESSURE = resultset.getString("BLOOD_PRESSURE");
+					String SUGAR = resultset.getString("BLOOD_SUGAR");
+					String WEIGHT = resultset.getString("WEIGHT");
+					String TEMPERATURE = resultset.getString("TEMPERATURE");
+					String DATE = resultset.getString("APP_DATE");
+					String FNAME = resultset.getString("P_FNAME");
+					String LNAME = resultset.getString("P_LNAME");
+					String DISEASE = resultset.getString("DISEASE");
+
 					Object[] data = { APP_ID, DATE, FNAME + " " + LNAME, DISEASE, PRESSURE, SUGAR, WEIGHT,
 							TEMPERATURE };
 					tableModel.addRow(data);
 					table.setModel(tableModel);
+
 				}
+
 			} catch (Exception ex) {
-				JOptionPane.showMessageDialog(null, this, "Error", 0);
+				JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", 0);
 			}
 
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, this, "Error", 0);
+			JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", 0);
 		}
+
 	}
 
 }
