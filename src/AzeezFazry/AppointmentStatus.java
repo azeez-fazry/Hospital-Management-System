@@ -1,5 +1,7 @@
-/**
- * @author AzeezFazry
+/*
+ * @author	: AzeezFazry
+ * @e-mail	: azeezfazry@gmail.com
+ * @github	: github.com/azeez-fazry
  */
 package AzeezFazry;
 
@@ -124,6 +126,8 @@ public class AppointmentStatus extends JFrame {
 				searchButtonactionPerformed();
 			}
 		});
+		getRootPane().setDefaultButton(searchButton);
+
 		JLabel lblNewLabel_2 = new JLabelFormat("Appointment ID:");
 
 		JLabel lblNewLabel_3 = new JLabelFormat("Doctor Name:");
@@ -265,7 +269,7 @@ public class AppointmentStatus extends JFrame {
 				jLabel3.setText(resultSet.getString("P_FNAME") + " " + resultSet.getString("P_LNAME"));
 				jLabel4.setText(resultSet.getString("DISEASE"));
 			} else {
-				JOptionPane.showMessageDialog(null, this, "ERROR", 0);
+				JOptionPane.showMessageDialog(null, "Appointment Not Found!", "ERROR", 0);
 			}
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", 0);

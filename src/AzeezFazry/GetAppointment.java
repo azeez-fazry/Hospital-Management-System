@@ -1,5 +1,7 @@
-/**
- * @author AzeezFazry
+/*
+ * @author	: AzeezFazry
+ * @e-mail	: azeezfazry@gmail.com
+ * @github	: github.com/azeez-fazry
  */
 package AzeezFazry;
 
@@ -113,6 +115,7 @@ public class GetAppointment extends JFrame {
 				submitButtonactionPerformed();
 			}
 		});
+		getRootPane().setDefaultButton(submitButton);
 
 		JPanel panel1 = new JPanel();
 		panel1.setBorder(new TitledBorder(new LineBorder(SystemColor.controlDkShadow, 2, true), "PATIENT INFORMATION",

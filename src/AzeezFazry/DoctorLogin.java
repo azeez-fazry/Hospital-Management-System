@@ -1,5 +1,7 @@
-/**
- * @author AzeezFazry
+/*
+ * @author	: AzeezFazry
+ * @e-mail	: azeezfazry@gmail.com
+ * @github	: github.com/azeez-fazry
  */
 package AzeezFazry;
 
@@ -106,6 +108,7 @@ public class DoctorLogin extends JFrame {
 				searchButtonactionPerformed(id);
 			}
 		});
+		getRootPane().setDefaultButton(searchButton);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);

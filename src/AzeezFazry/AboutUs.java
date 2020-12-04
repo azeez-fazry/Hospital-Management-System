@@ -1,5 +1,7 @@
-/**
- * @author AzeezFazry
+/*
+ * @author	: AzeezFazry
+ * @e-mail	: azeezfazry@gmail.com
+ * @github	: github.com/azeez-fazry
  */
 package AzeezFazry;
 
@@ -80,6 +82,8 @@ public class AboutUs extends JFrame {
 				dispose();
 			}
 		});
+		getRootPane().setDefaultButton(backButton);
+
 
 		JPanel developedByPanel = new JPanel();
 		developedByPanel.setBorder(new TitledBorder(new LineBorder(SystemColor.controlDkShadow, 2, true), "DEVELOPED BY",

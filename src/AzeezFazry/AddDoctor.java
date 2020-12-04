@@ -1,5 +1,7 @@
-/**
- * @author AzeezFazry
+/*
+ * @author	: AzeezFazry
+ * @e-mail	: azeezfazry@gmail.com
+ * @github	: github.com/azeez-fazry
  */
 package AzeezFazry;
 
@@ -139,6 +141,8 @@ public class AddDoctor extends JFrame {
 				submitButtonActionPerformed();
 			}
 		});
+		getRootPane().setDefaultButton(submitButton);
+		
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(gl_contentPane

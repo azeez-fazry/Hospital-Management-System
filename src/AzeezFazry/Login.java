@@ -1,5 +1,7 @@
-/**
- * @author AzeezFazry
+/*
+ * @author	: AzeezFazry
+ * @e-mail	: azeezfazry@gmail.com
+ * @github	: github.com/azeez-fazry
  */
 package AzeezFazry;
 
@@ -41,10 +43,9 @@ public class Login extends JFrame {
 	private JPasswordField passwordField;
 // 	End of variables declaration
 
-	/**
+	/*
 	 * Launch the application.
 	 */
-
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -53,7 +54,7 @@ public class Login extends JFrame {
 		});
 	}
 
-	/**
+	/*
 	 * Create the frame.
 	 */
 	public Login() {
@@ -150,7 +151,7 @@ public class Login extends JFrame {
 			}
 		});
 		getRootPane().setDefaultButton(loginButton);
-		
+
 
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.TRAILING)

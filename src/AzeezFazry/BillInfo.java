@@ -1,5 +1,7 @@
-/**
- * @author AzeezFazry
+/*
+ * @author	: AzeezFazry
+ * @e-mail	: azeezfazry@gmail.com
+ * @github	: github.com/azeez-fazry
  */
 package AzeezFazry;
 
@@ -80,8 +82,9 @@ public class BillInfo extends JFrame {
 		});
 	}
 
-	/**
+	/*
 	 * Create the frame.
+	 * 
 	 * @param pid
 	 * @param did
 	 */
@@ -132,9 +135,13 @@ public class BillInfo extends JFrame {
 		submitButton.setIcon(new ImageIcon("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\submit.jpg"));
 		submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				submitButtonactionPerformed();
+				if(Double.parseDouble(jLabel23.getText()) >= total) {
+					submitButtonactionPerformed();
+				}
 			}
 		});
+		getRootPane().setDefaultButton(submitButton);
+
 
 		JPanel appointmentDetailsPanel = new JPanel();
 		appointmentDetailsPanel.setOpaque(false);
