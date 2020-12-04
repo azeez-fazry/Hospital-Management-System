@@ -123,6 +123,7 @@ public class SearchStaff extends JFrame {
 				searchButtonactionPerformed();
 			}
 		});
+		getRootPane().setDefaultButton(searchButton);
 
 		JLabel lblNewLabel_2 = new JLabelFormat("Name:");
 

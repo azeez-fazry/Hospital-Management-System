@@ -99,6 +99,7 @@ public class DoctorLogin extends JFrame {
 		JLabel lblNewLabel = new JLabelFormat("Enter Your ID:");
 
 		textField = new JTextFieldFormat(10);
+		textField.setText("2");
 
 		JButton searchButton = new JButton();
 		searchButton.setIcon(new ImageIcon("E:\\IntelliJ\\Fazry's Hospital Management System\\Images\\search.jpg"));
@@ -184,25 +185,24 @@ public class DoctorLogin extends JFrame {
 			resultset = statement.executeQuery(query);
 
 			try {
-				
-				while (resultset.next()) {
-					
-					String APP_ID = resultset.getString("APP_ID");
-					String PRESSURE = resultset.getString("BLOOD_PRESSURE");
-					String SUGAR = resultset.getString("BLOOD_SUGAR");
-					String WEIGHT = resultset.getString("WEIGHT");
-					String TEMPERATURE = resultset.getString("TEMPERATURE");
-					String DATE = resultset.getString("APP_DATE");
-					String FNAME = resultset.getString("P_FNAME");
-					String LNAME = resultset.getString("P_LNAME");
-					String DISEASE = resultset.getString("DISEASE");
+					while (resultset.next()) {
 
-					Object[] data = { APP_ID, DATE, FNAME + " " + LNAME, DISEASE, PRESSURE, SUGAR, WEIGHT,
-							TEMPERATURE };
-					tableModel.addRow(data);
-					table.setModel(tableModel);
+						String APP_ID = resultset.getString("APP_ID");
+						String PRESSURE = resultset.getString("BLOOD_PRESSURE");
+						String SUGAR = resultset.getString("BLOOD_SUGAR");
+						String WEIGHT = resultset.getString("WEIGHT");
+						String TEMPERATURE = resultset.getString("TEMPERATURE");
+						String DATE = resultset.getString("APP_DATE");
+						String FNAME = resultset.getString("P_FNAME");
+						String LNAME = resultset.getString("P_LNAME");
+						String DISEASE = resultset.getString("DISEASE");
 
-				}
+						Object[] data = { APP_ID, DATE, FNAME + " " + LNAME, DISEASE, PRESSURE, SUGAR, WEIGHT,
+								TEMPERATURE };
+						tableModel.addRow(data);
+						table.setModel(tableModel);
+
+					}
 
 			} catch (Exception ex) {
 				JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", 0);

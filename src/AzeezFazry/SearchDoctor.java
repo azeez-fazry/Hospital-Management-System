@@ -126,6 +126,7 @@ public class SearchDoctor extends JFrame {
 				searchButtonactionPerformed();
 			}
 		});
+		getRootPane().setDefaultButton(searchButton);
 
 		JLabel lblNewLabel_2 = new JLabelFormat("Name:");
 

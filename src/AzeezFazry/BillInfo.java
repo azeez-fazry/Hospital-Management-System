@@ -82,7 +82,7 @@ public class BillInfo extends JFrame {
 		});
 	}
 
-	/*
+	/**
 	 * Create the frame.
 	 * 
 	 * @param pid
