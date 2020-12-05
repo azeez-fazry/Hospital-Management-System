@@ -5,6 +5,7 @@
  */
 package AzeezFazry;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -19,6 +20,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
@@ -53,7 +55,13 @@ public class DoctorLogin extends JFrame {
 	SimpleDateFormat f = new SimpleDateFormat("YYYY-MM-dd");
 	private JTextField textField;
 	private JTable table;
-
+	JTextField jLabel3;
+	JTextField jLabel7;
+	JTextField jLabel9;
+	String datePattern = "YYYY-MM-dd";
+	SimpleDateFormat ft = new SimpleDateFormat(datePattern);
+	String curr = ft.format(date);
+	
 //  End of variables declaration
 
 	/**
@@ -96,7 +104,7 @@ public class DoctorLogin extends JFrame {
 			}
 		});
 
-		JLabel lblNewLabel = new JLabelFormat("Enter Your ID:");
+		JLabel Jlabel1 = new JLabelFormat("Enter Your ID:");
 
 		textField = new JTextFieldFormat(10);
 		textField.setText("2");
@@ -122,47 +130,133 @@ public class DoctorLogin extends JFrame {
 						"Weight", "Temperature" }));
 		scrollPane.setViewportView(table);
 
+		JLabel jLabel2 = new JLabelFormat("Welcome Dr.");
+
+		jLabel3 = new JTextField("						");
+		jLabel3.setBorder(BorderFactory.createEmptyBorder());
+		jLabel3.setForeground(Color.RED);
+		jLabel3.setFont(new Font("Serif", Font.BOLD, 30));
+		jLabel3.setEditable(false);
+		jLabel3.setOpaque(false);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 0, 0, 30));
+
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane
-				.setHorizontalGroup(
-						gl_contentPane
-								.createParallelGroup(
-										Alignment.TRAILING)
-								.addGroup(gl_contentPane.createSequentialGroup().addGap(74)
-										.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.PREFERRED_SIZE)
-										.addGap(39)
-										.addComponent(textField, GroupLayout.PREFERRED_SIZE, 144,
-												GroupLayout.PREFERRED_SIZE)
-										.addGap(47)
-										.addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 200,
-												GroupLayout.PREFERRED_SIZE)
-										.addGap(666))
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup().addGap(583)
+						.addComponent(logoutButton, GroupLayout.PREFERRED_SIZE, 200, Short.MAX_VALUE).addGap(583))
+				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
+						.addComponent(title, GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE).addGap(622))
+				.addGroup(gl_contentPane.createSequentialGroup().addGap(83)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addGroup(gl_contentPane.createSequentialGroup()
+														.addComponent(jLabel2, GroupLayout.PREFERRED_SIZE,
+																GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+														.addGap(18).addComponent(jLabel3, GroupLayout.PREFERRED_SIZE,
+																GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+												.addGroup(gl_contentPane.createSequentialGroup()
+														.addComponent(Jlabel1, GroupLayout.PREFERRED_SIZE,
+																GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+														.addGap(39)
+														.addComponent(textField, GroupLayout.PREFERRED_SIZE, 144,
+																GroupLayout.PREFERRED_SIZE)
+														.addGap(47).addComponent(searchButton,
+																GroupLayout.PREFERRED_SIZE, 200,
+																GroupLayout.PREFERRED_SIZE)))
+										.addContainerGap())
 								.addGroup(
-										gl_contentPane.createSequentialGroup().addGap(83)
+										gl_contentPane.createSequentialGroup()
 												.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1200,
 														Short.MAX_VALUE)
-												.addGap(83))
-								.addGroup(gl_contentPane.createSequentialGroup().addGap(583)
-										.addComponent(logoutButton, GroupLayout.PREFERRED_SIZE, 200, Short.MAX_VALUE)
-										.addGap(583))
-								.addGroup(Alignment.LEADING,
-										gl_contentPane.createSequentialGroup().addContainerGap()
-												.addComponent(title, GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
-												.addGap(622)));
+												.addGap(83))))
+				.addGroup(Alignment.LEADING,
+						gl_contentPane.createSequentialGroup().addGap(421)
+								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 544, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap(401, Short.MAX_VALUE)));
 		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addComponent(title).addGap(30)
+				.addGroup(gl_contentPane.createSequentialGroup().addComponent(title).addGap(35)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								.addComponent(Jlabel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.PREFERRED_SIZE)
 								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.PREFERRED_SIZE)
 								.addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
-						.addGap(100)
+						.addGap(40)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE))
+						.addGap(45)
 						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 212, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
+						.addGap(28).addComponent(panel, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
 						.addComponent(logoutButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap()));
+
+		JLabel jLabel4 = new JLabelFormat("Number of patients on:");
+
+		JLabel jLabel5 = new JLabelFormat(curr);
+		jLabel5.setForeground(Color.RED);
+		
+		JLabel jLabel6 = new JLabelFormat("is");
+
+		jLabel7 = new JTextField();
+		jLabel7.setBorder(BorderFactory.createEmptyBorder());
+		jLabel7.setForeground(Color.RED);
+		jLabel7.setFont(new Font("Serif", Font.BOLD, 30));
+		jLabel7.setEditable(false);
+		jLabel7.setOpaque(false);
+		
+		JLabel jLabel8 = new JLabelFormat("Total Amount Rs.");
+
+		jLabel9 = new JTextField();
+		jLabel9.setBorder(BorderFactory.createEmptyBorder());
+		jLabel9.setForeground(Color.RED);
+		jLabel9.setFont(new Font("Serif", Font.BOLD, 30));
+		jLabel9.setEditable(false);
+		jLabel9.setOpaque(false);
+		
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(10)
+							.addComponent(jLabel7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(96)
+							.addComponent(jLabel8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(jLabel9, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(70, Short.MAX_VALUE))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jLabel7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(jLabel8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jLabel9, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(18, Short.MAX_VALUE))
+		);
+		panel.setLayout(gl_panel);
 
 		contentPane.setLayout(gl_contentPane);
 	}
@@ -182,36 +276,46 @@ public class DoctorLogin extends JFrame {
 			statement = connection.createStatement();
 			String query = "SELECT APP_ID,APP_DATE,P_FNAME,P_LNAME,DISEASE,BLOOD_PRESSURE,BLOOD_SUGAR,WEIGHT,TEMPERATURE FROM APPOINTMENT NATURAL JOIN PATIENT WHERE D_ID="
 					+ did;
+			String query1 = "SELECT D_FNAME,D_LNAME,FEE,COUNT(*) FROM BILLINFO NATURAL JOIN DOCTOR WHERE DOCTOR.D_ID = "
+					+ did + " GROUP BY P_ID";
+
 			resultset = statement.executeQuery(query);
 
-			try {
-					while (resultset.next()) {
+			while (resultset.next()) {
 
-						String APP_ID = resultset.getString("APP_ID");
-						String PRESSURE = resultset.getString("BLOOD_PRESSURE");
-						String SUGAR = resultset.getString("BLOOD_SUGAR");
-						String WEIGHT = resultset.getString("WEIGHT");
-						String TEMPERATURE = resultset.getString("TEMPERATURE");
-						String DATE = resultset.getString("APP_DATE");
-						String FNAME = resultset.getString("P_FNAME");
-						String LNAME = resultset.getString("P_LNAME");
-						String DISEASE = resultset.getString("DISEASE");
+				String APP_ID = resultset.getString("APP_ID");
+				String PRESSURE = resultset.getString("BLOOD_PRESSURE");
+				String SUGAR = resultset.getString("BLOOD_SUGAR");
+				String WEIGHT = resultset.getString("WEIGHT");
+				String TEMPERATURE = resultset.getString("TEMPERATURE");
+				String DATE = resultset.getString("APP_DATE");
+				String FNAME = resultset.getString("P_FNAME");
+				String LNAME = resultset.getString("P_LNAME");
+				String DISEASE = resultset.getString("DISEASE");
 
-						Object[] data = { APP_ID, DATE, FNAME + " " + LNAME, DISEASE, PRESSURE, SUGAR, WEIGHT,
-								TEMPERATURE };
-						tableModel.addRow(data);
-						table.setModel(tableModel);
+				Object[] data = { APP_ID, DATE, FNAME + " " + LNAME, DISEASE, PRESSURE, SUGAR, WEIGHT, TEMPERATURE };
+				tableModel.addRow(data);
+				table.setModel(tableModel);
 
-					}
+			}
 
-			} catch (Exception ex) {
-				JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", 0);
+			resultset = statement.executeQuery(query1);
+
+			while (resultset.next()) {
+				jLabel3.setText(resultset.getString("D_FNAME") + " " + resultset.getString("D_LNAME"));
+				System.out.println(resultset.getString("D_FNAME") + " " + resultset.getString("D_LNAME"));
+				
+				int num = Integer.parseInt(resultset.getString("COUNT(*)"));
+				jLabel7.setText(String.valueOf(num));
+				
+				Double total = Double.parseDouble(resultset.getString("FEE")) * num;
+				jLabel9.setText(total.toString());
 			}
 
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", 0);
+			
 		}
 
 	}
-
 }

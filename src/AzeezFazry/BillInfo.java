@@ -74,7 +74,7 @@ public class BillInfo extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new BillInfo("111", "211").setVisible(true);
+					new BillInfo("105", "205").setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -421,7 +421,7 @@ public class BillInfo extends JFrame {
 												.addGap(18)
 												.addComponent(jLabel4, GroupLayout.PREFERRED_SIZE,
 														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addGap(428)
+												.addGap(350)
 												.addComponent(jLabel2, GroupLayout.PREFERRED_SIZE,
 														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 												.addGap(18).addComponent(jLabel5, GroupLayout.PREFERRED_SIZE,
