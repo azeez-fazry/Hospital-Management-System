@@ -297,12 +297,20 @@ public class GetAppointment extends JFrame {
 
 				String query = "select max(d_id) from appointment;";
 				resultSet = statement.executeQuery(query);
+				
 				if (resultSet.next()) {
 					String id = resultSet.getString("max(d_id)");
-					JOptionPane.showMessageDialog(null, "Record Inserted Successfully." + "\n" + "\n" + "APPOINTMENT ID: " + id,
+					JOptionPane.showMessageDialog(null,
+							"Record Inserted Successfully." + "\n" + "\n" + "APPOINTMENT ID: " + id,
 							"Record Inserted Successfully", JOptionPane.NO_OPTION);
 				}
-
+				
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						new BillInfo(pid, did).setVisible(true);
+					}
+				});
+				
 				textField1.setText("1");
 				textField2.setText("2");
 				textField3.setText(curr);
@@ -314,11 +322,6 @@ public class GetAppointment extends JFrame {
 			textField3.setText(curr);
 		}
 
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new BillInfo(pid, did).setVisible(true);
-			}
-		});
 	}
 
 	private boolean compareDate(String App_Date) {

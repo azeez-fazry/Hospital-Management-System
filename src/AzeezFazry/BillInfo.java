@@ -67,7 +67,7 @@ public class BillInfo extends JFrame {
 	Double hfees = 500.0;
 //  End of variables declaration
 
-	/**
+	/*
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -82,7 +82,7 @@ public class BillInfo extends JFrame {
 		});
 	}
 
-	/**
+	/*
 	 * Create the frame.
 	 * 
 	 * @param pid
