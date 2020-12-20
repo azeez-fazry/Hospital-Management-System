@@ -1,3 +1,8 @@
+/*
+ * @author					: AzeezFazry
+ * @e-mail					: azeezfazry@gmail.com
+ * @github					: github.com/azeez-fazry
+ */
 package AzeezFazry;
 
 import java.awt.Color;
@@ -8,11 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
-/*
- * @author					: AzeezFazry
- * @e-mail					: azeezfazry@gmail.com
- * @github					: github.com/azeez-fazry
- */
+
 public class JLabelHome extends JLabel {
 
 	public JLabelHome(String text) {
