@@ -121,11 +121,7 @@ public class Login extends JFrame {
 									"Login Successful", JOptionPane.NO_OPTION);
 					textField.setText(null);
 					passwordField.setText(null);
-					EventQueue.invokeLater(new Runnable() {
-						public void run() {
-							new Activities().setVisible(true);
-						}
-					});
+					new Home().setVisible(true);
 
 				} else if (username.equals("doctor") && password.equals("doctor@123")) {
 
@@ -134,11 +130,7 @@ public class Login extends JFrame {
 							"Login Successful", JOptionPane.NO_OPTION);
 					textField.setText(null);
 					passwordField.setText(null);
-					EventQueue.invokeLater(new Runnable() {
-						public void run() {
-							new DoctorLogin().setVisible(true);
-						}
-					});
+					new DoctorLogin().setVisible(true);
 
 				} else {
 
